@@ -1,0 +1,305 @@
+
+//---------------dfs----------------//
+//adjacancy matrix;
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+int g[N][N];
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        g[u][v]=1;
+        g[v][u]=1;
+    }
+    if(g[4][7]) cout<<"YES";
+    else cout<<"NO";
+    
+}
+
+
+//----------------including element with element------/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+vector<ll>gg[N];
+int g[N][N];
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        gg[u].push_back(v);
+        gg[v].push_back(u);
+
+        g[u][v]=1;
+        g[v][u]=1;
+    }
+    if(g[4][7]) cout<<"YES";
+    else cout<<"NO";
+    cout<<"Degree"<<g[5].size();
+    
+}
+// degree g[u].size();
+// if i need to find if there are any edge between 2 and 4 then 
+//i need to use set instead of vector
+//----------------- connceted disconnected-------------------
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+vector<ll>gg[N];
+bool vis[N];
+int g[N][N];
+void dfs(int u){
+    vis[u]=true;
+    for(auto v:g[u]){
+        if(!vis[v]){
+            dfs(v);
+        }
+    }
+
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        gg[u].push_back(v);
+        gg[v].push_back(u);
+
+    }
+    dfs(1);
+bool ff=1;
+    for(int i=1;i<=n;i++){
+        if(!vis[i]) {
+            cout<<"NOT connected"<<endl;
+            ff=0;
+            break;
+        }
+    }
+    if(ff) cout<<"connected";
+    
+    
+}
+
+//------------------------
+
+/* number of connected component
+
+for(i=1;i<=n;i++){
+if(!vis[i]){
+cnt++;
+dfs(i);
+}
+}
+*/
+
+//------------------------bfs--------------------
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+ll vis[N];
+int g[N][N];
+vector<ll>dis[N];
+void dfs(int u){
+    vis[u]=true;
+    for(auto v:g[u]){
+        if(!vis[v]){
+            dfs(v);
+        }
+    }
+
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        gg[u].push_back(v);
+        gg[v].push_back(u);
+
+    }
+    queue<ll>q;
+    q.push(1);
+    vis[1]=true;
+    dis[1]=0;
+    while(!q.empty()){
+        ll u=q.front();
+        q.pop();
+        for(auto v:g[u]){
+            if(!vis[v]){
+                q.push(v);
+                dis[v]=dis[u]+1;
+                vis[v]=true;
+            }
+        }
+    }  
+
+}
+
+//-------------by coloring
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+ll col[N];
+vector<ll>gg[N];
+int g[N][N];
+void dfs(int u){
+    vis[u]=true;
+    for(auto v:g[u]){
+        if(!vis[v]){
+            col[v]=col[u]^1;
+             dfs(v);
+        }
+        else {
+            if(col[u]==col[v]){
+                ok=false;
+            }
+        }
+    }
+
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        gg[u].push_back(v);
+        gg[v].push_back(u);
+
+    }
+    bool ok=true;
+    for(int i=1;i<=n;i++){
+        if(!vis[i]) dfs(i);
+    }
+    if(ok){
+        cout<<"YES";
+    }
+    else cout<<"NO";
+ 
+    
+}
+
+//-----------------
+/*
+those nodes who colored ,will be put into an outer node..and 
+then take a bfs
+or all colored nodes will be put into queue first then take e bfs
+
+*/
+
+//------------------
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+vector<ll>gg[N];
+int g[N][N];
+ll indeg[N];
+bool vis[N];
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        g[u].push_back(v);
+        indeg[v]++;
+    }
+    vector<ll>ans;
+    while(ans.size()<n){
+        ll cur=0;
+        for(int i=1;i<=n;i++){
+            if(indeg[i]==0&&!vis[i]){
+                cur=i;
+                break;
+            }
+
+        }
+        if(cur==0){
+            cout<<"impossible";
+            return 0;
+        }
+        vis[cur]=true;
+        ans.push_back(cur);
+        for(auto v:g[cur]){
+            indeg[v]--;
+
+        }
+    }
+    for(auto x:ans){
+        cout<<x<<' ';
+    }
+    
+ 
+    
+}
+
+//-----------------------
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int N=105;
+vector<ll>gg[N];
+int g[N][N];
+ll indeg[N];
+ll col[N];
+bool vis[N];
+bool cycle=false;
+void dfs(int u){
+    col[u]=1;
+    vis[u]=true;
+    for(auto v:g[u]){
+        if(col[v]==0){
+            dfs(v);
+        }
+        else if(col[v]==1) cycle=true;
+    }
+
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    while(m--){
+        ll u,v;
+        cin>>u>>v;
+        g[u].push_back(v);
+        
+    }
+    dfs(1);
+}

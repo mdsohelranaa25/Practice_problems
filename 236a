@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+
+string s;
+cin>>s;
+int m=s.length();
+for(int i=0;i<s.length();i++){
+    for(int j=0;j<s.length();j++){
+        if(s[i]==s[j]){
+            m--;
+        }
+    }
+}
+if(m%2==0)
+cout<<"CHAT WITH HER!";
+else 
+cout<<"IGNORE HIM!";
+
+
+
+}

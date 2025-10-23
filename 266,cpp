@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+ int m=f(s,count);
+
+
+int main(){
+
+int n;
+int i;
+int j;
+ int count=0;
+cin>>n;
+string s[n];
+for(i=0;i<n;i++){
+    cin>>s[i];
+
+}
+for(int i=0;i<n;i++){
+   for(char &c:s[i]){
+    if(c=='r'||c=='g'||c=='b'){
+        c=toupper(c);
+    }
+   }
+    
+    
+}
+// for(i=0;i<n;i++){
+//     cout<<s[i];
+// }
+
+
+ int m=f(s,count);
+cout<<m<<endl;
+return 0;
+}
+
+
+
+
+
+
+int f(string s[],int count){
+for(int i=0;i<s.length();i++){
+    if(s[i]==s[i-1]){
+    count++;
+}}
+return count;
+}
