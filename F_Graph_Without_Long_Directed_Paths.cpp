@@ -8,6 +8,7 @@
   #include<bits/stdc++.h>
   using namespace std;
   #define tt int t;cin>>t;while(t--)
+  
   #define itr(i,a) for(int i=0;i<a;i++)
 #define ittr(i,bg,a) for(int i=bg;i<a;i++)
   #define yes cout<<"YES"<<endl
