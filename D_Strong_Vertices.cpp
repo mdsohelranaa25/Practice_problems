@@ -64,44 +64,30 @@ vc(v,n);
 itr(i,n) cin>>v[i];
 vc(vv,n) ;
 itr(i,n) cin>>vv[i];
+map<ll,vector<ll>>mp;
 vector<pair<ll,ll>>pr;
 itr(i,n){
     ll dif=v[i]-vv[i];
     pr.push_back({dif,i});
+    mp[dif].push_back(i+1);
 }
 rsrt(pr);
 ll j=pr[0].sc;
-bool f=0;
-itr(i,n){
-    if(i==j) continue;
-    ll d1=v[j]-v[i];
-    ll d2=vv[j]-vv[i];
-    if(d1<d2){
-        f=1;
-        break;
-    }
-}
-if(f) cout<<0<<endl;
-else {
-    vector<ll>ans;
-    ans.push_back(j+1);
-    for(int i=0;i<n;i++){
-        if(i==j) continue;
-        ll d1=v[i]-v[j];
-        ll d2=vv[i]-vv[j];
-        if(d1>=d2) ans.push_back(i+1);
 
-        
-    }
-    srt(ans);
-    cout<<ans.size()<<endl;
-    for(auto x:ans) cout<<x<<' ';
+
+set<ll>st;
+st.insert(j+1);
+ll val=pr[0].f;
+for(auto x:mp[val]) st.insert(x);
+   cout<<st.size()<<endl;
+    for(auto x:st) cout<<x<<' ';
     cout<<endl;
-}
+
+
+
 
 
 
   }
   }
   
-

@@ -1,41 +1,54 @@
+/*
+  //! In The Name Of Allah
+
+
+
+
+*/
 #include <bits/stdc++.h>
 using namespace std;
-
+#define tt  \
+  int t;    \
+  cin >> t; \
+  while (t--)
+#define itr(i, a) for (int i = 0; i < a; i++)
+#define ittr(i, bg, a) for (int i = bg; i < a; i++)
+#define yes cout << "YES" << endl
+#define no cout << "NO" << endl
 #define ll long long
-#define vc(v, n) vector<ll> v(n)  
+#define endd cout << endl
+#define vc(v, n) vector<ll> v(n)
 #define srt(v) sort(v.begin(), v.end())
+#define rsrt(v) sort(v.rbegin(), v.rend())
+#define pb(a, x) a.push_back(x)
+#define MOD 1000000007
+#define f first
+#define sc second
+#define endl '\n'
+const int N = 1e6 + 1;
+vector<bool> isprime(N, false);
+vector<ll> primes;
 
-ll rec(vector<ll>& v, ll x, ll lo, ll hi, ll n) {
-    ll ans = n;
-    while (lo <= hi) {
-        ll mid = (lo + hi) / 2;
-        if (v[mid] > x) {
-            ans = mid;
-            hi = mid - 1;
-        } else {
-            lo = mid + 1;
-        }
-    }
-    return ans;
-}
 
-int main() {
+void solve()
+{
+vc(v,3);
+ll n=3;
+itr(i,n) cin>>v[i];
+srt(v);
+if(v[2]-v[0]>=10) cout<<"check again"<<endl;
+else cout<<"final "<<v[1]<<endl;
   
-        ll n;
-        cin >> n;
-        vc(v, n);
-        for (auto &it : v) cin >> it;
-        srt(v);
 
-        ll m;
-        cin >> m;
-        vc(vv, m);
-        for (auto &it : vv) cin >> it;
-
-        for (ll i = 0; i < m; i++) {
-            ll x = vv[i];
-            ll ans =upper_bound(v.begin(),v.end(),x)-v.begin();
-            cout << ans << endl;
-        }
-    }
-
+}
+int main()
+{
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  // sieve();
+  // divis();
+  //tt
+  {
+    solve();
+  }
+}

@@ -23,7 +23,7 @@ using namespace std;
 #define rsrt(v) sort(v.rbegin(), v.rend())
 #define pb(a, x) a.push_back(x)
 #define MOD 1000000007
-
+#define dbug(x) cerr << (#x) << " is " << (x) << nl;
 #define sc second
 #define endl '\n'
 const int N = 1e6 + 1;

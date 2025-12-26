@@ -1,0 +1,1 @@
+{"name":"Local: j_mc","url":"e:\\l.disk\\Desktop\\Programming\\c++ jenny\\j_mc.cpp","tests":[{"id":1763123691633,"input":"4\n500.50\n8028.40\n33504.20\n75000.00\n","output":"15002.50\n51321\n110007.00\n200000.0000\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\l.disk\\Desktop\\Programming\\c++ jenny\\j_mc.cpp","group":"local","local":true}

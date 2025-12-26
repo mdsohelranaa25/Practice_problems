@@ -1,0 +1,1 @@
+{"name":"Local: K_brac","url":"e:\\l.disk\\Desktop\\Programming\\c++ jenny\\K_brac.cpp","tests":[{"id":1762349020306,"input":"2\n3 3\n1 2 -2 -1 3 -3\n1 6\n5 6\n1 4\n1 1\n1 -1\n1 2\n","output":"2\n1\n1\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\l.disk\\Desktop\\Programming\\c++ jenny\\K_brac.cpp","group":"local","local":true}
